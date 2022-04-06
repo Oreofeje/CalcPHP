@@ -1,37 +1,19 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
-</head>
-
-<body>
-
-  <h1>
-    <?php
-    echo 'Kodecamp PHP Task 1';
-    ?>
-  </h1>
-</body>
-
-</html>
-
 <?php
-// 1. calculator
-
-
-// echo "hello php";
-// print "hi php";
 
 error_reporting(0);
 
 print_r("Welcome to My Kodecamp Calculator");
 print_r("===== \n");
 
-$firstValue = readline(" enter value first value : ");
+$firstValue = readline(" enter first value : ");
+
+// prevent rendering first value as string
+if (is_numeric($firstValue) === false) {
+  print_r("enter a figure as the first value please \n");
+  return;
+}
+
+
 $operator = readline("enter operator : ");
 
 switch ($operator) {
@@ -43,7 +25,14 @@ switch ($operator) {
 }
 
 $secondValue = readline("enter the value of second number : ");
+// prevent rendering second value as string
+if (is_numeric($secondValue) === false) {
+  print_r("enter a figure as the second value please \n");
+  return;
+}
+
 $divisorError = readline("the divisor should be greater than 0");
+
 
 
 if ($operator === '/') $result = ($firstValue / $secondValue);
@@ -51,10 +40,10 @@ if ($operator === '*') $result = $firstValue * $secondValue;
 if ($operator === '+') $result = $firstValue + $secondValue;
 if ($operator === '-') $result = $firstValue - $secondValue;
 
-if ($operator === '/' && $secondValue === 0) $result = $divisorError;
-//  {
-//   echo "the divisor should be greater than 0 ";
-// }
+
+if ($operator === '/' && $secondValue === 0) 
+$result = $divisorError;
+
 print_r("result is :" . $result . "\n");
 
 
